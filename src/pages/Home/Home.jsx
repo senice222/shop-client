@@ -80,7 +80,7 @@ const Home = () => {
                                 <div className={style.productsItemName}>
                                     {item.title}
                                 </div>
-                                <img src={`http://5.42.107.119/api/uploads/${item.image}`} alt='/' className={style.productsItemImg}/>
+                                <img src={`http://5.42.107.119/internal/uploads/${item.image}`} alt='/' className={style.productsItemImg}/>
                                 <div className={style.productsItemInfo}>
                                     <p>Категория: {item.category}</p>
                                     <p>{item.price} RUB</p>
