@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'http://localhost:3000/internal',
+    baseURL: 'http://5.42.107.119/internal',
     headers: { Authorization: window.localStorage.getItem('token') },
 })
 
