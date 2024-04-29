@@ -1,0 +1,71 @@
+.modalBg {
+  background-color: rgba(0, 0, 0, 0.37);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content {
+  width: 400px;
+  min-height: 360px;
+  padding: 60px 50px;
+  background-color: white;
+  box-shadow: 3px 3px 20px 0 rgba(0,0,0,.2);
+  border-radius: 4px;
+  h1 {
+    margin-bottom: 30px;
+    font-weight: 400;
+    font-size: 24px;
+  }
+  .inputs {
+    input {
+      width: 100%;
+      margin-bottom: 20px;
+      height: 50px;
+      color: #212529;
+      font-size: 16px;
+      font-weight: 400;
+      border: 1px solid rgba(0,0,0,.3);
+      background: #fff;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      border-radius: 0;
+      padding: 20px;
+      -webkit-transition: all .1s;
+      transition: all .1s;
+    }
+
+  }
+  button {
+    outline: none;
+    border: 0;
+    width: 100%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 50px;
+    font-size: 16px;
+    //margin-top: 20px;
+    color: #fff;
+    padding: 5px;
+    background: #3b3b3b;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    line-height: 1;
+    font-weight: 500;
+    min-height: 44px;
+    text-align: center;
+    align-items: center;
+    &:hover {
+      background: #292929;
+    }
+  }
+  p {
+    text-align: center;
+    margin-top: 15px;
+  }
+}

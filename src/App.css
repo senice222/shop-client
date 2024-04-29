@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+a {
+  color: black;
+}
+a:hover {
+  color: black;
+}
+.appDiv {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+}
+.active::before {
+  display: block !important;
+}

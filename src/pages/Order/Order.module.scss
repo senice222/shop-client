@@ -1,0 +1,113 @@
+.container {
+  max-width: 1230px;
+  padding: 0 30px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .title {
+    font-size: 48px;
+    letter-spacing: 2.4px;
+    margin-bottom: 5px;
+    margin-top: 20px;
+    font-weight: 200;
+    color: #212529;
+    word-break: break-word;
+    font-family: Oswald;
+  }
+
+  .orderWrap {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    display: flex;
+    justify-content: center;
+    //width: 80%;
+    .orderBlock {
+      padding: 20px 35px;
+      border: 1px solid rgba(0, 0, 0, .5);
+      background: #fff;
+      color: #000;
+      word-break: break-word;
+
+      .orderBottom {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+
+        button {
+          font-size: 14px;
+          width: 50%;
+          line-height: 1;
+          margin-right: 20px;
+          padding: 10px 15px;
+          min-height: 41px;
+          background: 0 0;
+          border: 2px solid #3b3b3b;
+          color: #3b3b3b;
+          cursor: pointer;
+          transition: .2s;
+          span {
+
+          }
+        }
+        button:hover {
+          background: #3b3b3b;
+          color: #fff;
+        }
+      }
+
+      .orderTitle {
+        font-weight: 500;
+        font-size: 20px;
+        font-family: Oswald;
+        color: #212529;
+        margin: 0 0 40px 0;
+      }
+
+      .orderContent {
+
+        .orderTable {
+          border-spacing: 0;
+          border-collapse: collapse;
+          width: 100%;
+
+          tbody {
+            tr {
+              border-spacing: 0;
+              border-collapse: collapse;
+              width: 100%;
+
+              td {
+                transition: .3s;
+                border: 1px solid rgba(0, 0, 0, .5);
+                text-align: center;
+                word-break: break-word;
+                font-size: 14px;
+                padding: 20px;
+              }
+              .orderStatic {
+
+                .waitPayment {
+                  color: #0a6aa1 !important;
+                  font-weight: bold;
+                  text-align: center;
+                  word-break: break-word;
+                  font-size: 14px;
+                }
+
+                p {
+                  color: #3b3b3b;
+                  text-align: center;
+                  word-break: break-word;
+                  font-weight: bold;
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

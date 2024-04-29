@@ -1,0 +1,110 @@
+.menuContainer {
+  background-color: white;
+  width: 100vw;
+  z-index: 999;
+  max-height: 0;
+  transition: .4s;
+  padding: 15px 25px;
+  img {
+    width: 40px;
+    height: 40px;
+  }
+  .links {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+  }
+  a {
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-decoration: none;
+  }
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    button {
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      font-size: 24px;
+    }
+  }
+}
+.activeModal {
+  max-height: 650px;
+}
+.bgModal {
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: .4s;
+  height: 100vh;
+  position: fixed;
+  z-index: 999;
+  width: 100vw;
+  pointer-events: none;
+}
+.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.vhodvihod {
+  display: flex;
+  div {
+    cursor: pointer;
+    margin-right: 25px;
+    display: flex;
+  }
+}
+.name {
+  font-size: 14px;
+}
+.openBtn {
+  width: 35px;
+  height: 35px;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  p {
+    user-select: none;
+    font-size: 20px;
+  }
+  margin-left: 15px;
+}
+.profile {
+  display: flex;
+  align-items: center;
+  .leftDiv {
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    h2 {
+      margin-right: 0;
+    }
+  }}
+hr {
+  //margin-top: 15px;
+  margin-bottom: 15px;
+}
+.hided {
+  max-height: 0;
+  display: flex;
+  margin-top: 15px;
+  flex-direction: column;
+  a {
+    margin-bottom: 0;
+    transition: .4s;
+
+  }
+  overflow: hidden;
+  transition: .4s;
+}
+.showed {
+  max-height: 600px;
+  a {
+    margin-bottom: 15px !important;
+  }
+}

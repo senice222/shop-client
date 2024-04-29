@@ -1,0 +1,40 @@
+.item {
+    margin-top: 30px;
+    border-bottom: 1px solid gray;
+    width: 1140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: 1150px) {
+        width: 97vw;
+    }
+  .date {
+    font-size: 14px;
+  }
+  .vasya {
+    color: #1e7ce7;
+    word-break: break-word;
+    font-size: 14px;
+    b {
+        color: black !important;
+    }
+  }
+  .text {
+    margin-top: 7px;
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+}
+.content {
+    margin-left: 25px;
+}
+.edit {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid black;
+}

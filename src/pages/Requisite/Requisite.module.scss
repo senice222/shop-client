@@ -1,0 +1,52 @@
+.requisite {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.addProduct {
+  margin-top: 30px;
+  button {
+    width: 200px;
+    height: 60px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .1s;
+  }
+  button:hover {
+    background-color: #343434;
+  }
+  margin-bottom: 20px;
+}
+.table{
+  margin-top: 25px !important;
+  table-layout: fixed;
+  width: 70%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.table th {
+  font-weight: bold;
+  padding: 5px;
+  background: #efefef;
+  border: 1px solid #dddddd;
+}
+.table td{
+  padding: 5px 10px;
+  border: 1px solid #eee;
+  text-align: left;
+}
+.table tbody tr:nth-child(odd){
+  background: #fff;
+}
+.table tbody tr:nth-child(even){
+  background: #F7F7F7;
+}

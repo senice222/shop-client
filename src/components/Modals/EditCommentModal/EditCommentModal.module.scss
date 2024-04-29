@@ -1,0 +1,95 @@
+.modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.308);
+    opacity: 0;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    transition: .3s;
+}
+
+.content {
+    width: 400px;
+    min-height: 300px;
+    background-color: white;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    button {
+        color: #fff;
+        background: #1677ff;
+        box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
+        font-size: 14px;
+        line-height: 1.5714285714285714;
+        height: 32px;
+        padding: 4px 15px;
+        border-radius: 6px;
+        border: 0;
+        transition: .2s;
+        cursor: pointer;
+        margin-top: 8px;
+        &:hover {
+            color: #fff;
+            background: #4096ff;
+        }
+    }
+
+    .items {
+        width: 100%;
+
+
+        .item {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+
+
+            h2 {
+                align-self: flex-start;
+                color: rgba(0, 0, 0, 0.88);
+                font-size: 14px;
+                margin-bottom: 7px;
+                margin-top: 7px;
+                margin-left: 10px;
+            }
+
+            input {
+                border-radius: 6px;
+                width: 95%;
+                padding: 4px 11px;
+                color: rgba(0, 0, 0, 0.88);
+                font-size: 14px;
+                background: #ffffff;
+                border-width: 1px;
+                border-style: solid;
+                border-color: #d9d9d9;
+                transition: .2s;
+
+                &:focus {
+                    border-color: #1677ff;
+                    box-shadow: 0 0 0 2px rgba(5, 145, 255, 0.1);
+                    outline: 0;
+                    background-color: #ffffff;
+                }
+
+                &:hover {
+                    border-color: #4096ff;
+                    background-color: #ffffff;
+                }
+            }
+        }
+    }
+}
+
+.opened {
+    opacity: 1;
+    pointer-events: all;
+}

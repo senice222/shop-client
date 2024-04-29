@@ -1,0 +1,24 @@
+.purchase {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .title {
+    font-weight: 200;
+    color: #212529;
+    word-break: break-word;
+    font-size: 48px;
+    letter-spacing: 1px;
+  }
+  .description {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 21px;
+    color: #424242;
+    word-break: break-word;
+  }
+  .items {
+    display: flex;
+    flex-direction: column;
+  }
+}

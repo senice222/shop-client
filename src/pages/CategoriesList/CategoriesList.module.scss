@@ -1,0 +1,94 @@
+
+.productsList {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+
+  .searchDiv {
+    margin-bottom: 20px;
+    //height: 30px;
+    //display: flex;
+    input {
+      width: 250px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.2s ease-in-out;
+    }
+    input:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+    }
+    div {
+      width: 230px;
+      margin-left: 10px;
+      margin-top: 10px;
+      outline: none;
+      border: none;
+      background-color: #343434;
+      color: white;
+      padding: 10px;
+      font-size: 12px;
+      font-weight: bold;
+      transition: .1s;
+    }
+  }
+  .addProduct {
+    button {
+      width: 200px;
+      height: 60px;
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      background-color: black;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: .1s;
+    }
+    button:hover {
+      background-color: #343434;
+    }
+    margin-bottom: 20px;
+  }
+
+  .list {
+    margin-top: 30px;
+
+    .productItem {
+      width: 1000px;
+      height: 150px;
+      border: 1px solid black;
+
+    }
+  }
+}
+
+.table{
+  table-layout: fixed;
+  width: 70%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.table th {
+  font-weight: bold;
+  padding: 5px;
+  background: #efefef;
+  border: 1px solid #dddddd;
+}
+.table td{
+  padding: 5px 10px;
+  border: 1px solid #eee;
+  text-align: left;
+}
+.table tbody tr:nth-child(odd){
+  background: #fff;
+}
+.table tbody tr:nth-child(even){
+  background: #F7F7F7;
+}
