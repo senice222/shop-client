@@ -41,6 +41,7 @@ const DetailedProduct = () => {
                         <img src={`http://happyshop23.co/internal/uploads/${product?.image}`} alt="/"/>
                         <p className={style.title}>Название: {product?.title}</p>
                         <p className={style.category}>Категория: {product?.category}</p>
+                        <p className={style.category}>Город: {product?.city}</p>
                         <p className={style.gramm}>Грамм: {product?.gramm}</p>
                         <p className={style.price}>Цена: {product?.price}</p>
                     </div>
