@@ -82,6 +82,7 @@ const Home = () => {
                                      className={style.productsItemImg}/>
                                 <div className={style.productsItemInfo}>
                                     <p>Категория: {item.category}</p>
+                                    <p>Город: {item.city}</p>
                                     <p>{item.price} RUB</p>
                                     <button onClick={() => buyProductHandler(item)}>Купить</button>
                                 </div>
