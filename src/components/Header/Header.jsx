@@ -83,6 +83,16 @@ export const Header = () => {
                     </div>
                 ),
             },
+            {
+                key: '9',
+                label: (
+                    <div className={s.itemLink} onClick={() => navigate("/cities/list")}>
+                        <a>
+                            Города
+                        </a>
+                    </div>
+                ),
+            },
         );
     }
 

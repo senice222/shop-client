@@ -22,6 +22,7 @@ const MyFormItem = ({ name, ...props }) => {
 const AddModal = ({ createModal, setCreateModal, update }) => {
     const [fileList, setFileList] = useState();
     const [category, setCategory] = useState()
+    const [cityCheckbox, setCityCheckbox] = useState()
     const [city, setCity] = useState()
     const [categories, setCategories] = useState()
 
@@ -45,11 +46,12 @@ const AddModal = ({ createModal, setCreateModal, update }) => {
         getCategories()
         getCity()
     }, [])
+
     const onFinish = async (value) => {
         const formData = new FormData();
         formData.append("title", value.title);
         formData.append("gramm", value.gramm);
-        formData.append("city", city);
+        formData.append("city", cityCheckbox);
         formData.append("category", category);
         formData.append("price", value.price);
         fileList?.forEach(item => formData.append("image", item.originFileObj))
@@ -104,11 +106,11 @@ const AddModal = ({ createModal, setCreateModal, update }) => {
                         {city ? <Select
                             defaultValue="Выберите город"
                             style={{ width: '95%', zIndex: "999999" }}
-                            onChange={setCategory}
+                            onChange={setCityCheckbox}
                             options={
                                 city.map((item) => {
                                     return {
-                                        value: item.category, label: item.category
+                                        value: item.city, label: item.city
                                     }
                                 })
                             }

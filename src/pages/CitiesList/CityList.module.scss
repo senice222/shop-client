@@ -4,7 +4,7 @@
   align-items: center;
   flex-direction: column;
   margin-top: 50px;
-  min-height: 70vh;
+
   .searchDiv {
     margin-bottom: 20px;
     //height: 30px;
@@ -67,7 +67,6 @@
   }
 }
 
-
 .table{
   table-layout: fixed;
   width: 70%;
@@ -92,16 +91,4 @@
 }
 .table tbody tr:nth-child(even){
   background: #F7F7F7;
-}
-
-@media (max-width: 768px) {
-  .tableBody {
-    //width: 60% !important;
-  }
-  td {
-    width: 50px;
-  }
-  span {
-    display: none;
-  }
 }

@@ -1,30 +1,33 @@
 import React, {useEffect, useState} from 'react';
-import style from './CategoriesList.module.scss'
+import style from './CityList.module.scss'
 import {useDebounce} from "../../hooks/useDebouce";
 import instance from "../../core/axios";
 import CategoryModal from "../../components/Modals/CategoryModal/CategoryModal";
 import { CategoryEditModal } from '../../components/Modals/CategoryModal/CategoryEditModal';
+import CityModal from "../../components/Modals/CityModal/CityModal";
+import {CityEditModal} from "../../components/Modals/CityModal/CityEditModal";
 
-const CategoriesList = () => {
-    const [categories, setCategories] = useState()
+const CityList = () => {
+    const [city, setCities] = useState()
     const [value, setValue] = useState("")
     const debouncedValue = useDebounce(value, 400)
     const [createModal, setCreateModal] = useState(false)
     const [opened, setOpened] = useState(false)
     const [activeCategory, setActiveCategory] = useState()
-    const getProducts = async () => {
+
+    const getCity = async () => {
         try {
-            const {data} = await instance.get("/category/list");
-            setCategories(data);
+            const {data} = await instance.get("/city/list");
+            setCities(data);
         } catch (error) {
             console.error("Error fetching products:", error);
         }
     };
     useEffect(() => {
-        
-        getProducts();
+        getCity();
     }, []);
-    const categoriesSearch = categories?.filter(item => item.category.toLowerCase().includes(debouncedValue.toLowerCase()))
+    const citySearch = city?.filter(item => item.city.toLowerCase().includes(debouncedValue.toLowerCase()))
+
     const handleEdit = (item) => {
         setActiveCategory(item)
         setOpened(!opened)
@@ -32,11 +35,11 @@ const CategoriesList = () => {
 
     return (
         <div className={style.productsList}>
-            {activeCategory ? <CategoryEditModal update={getProducts} item={activeCategory} opened={opened} setOpened={() => setOpened(!opened)}/> : null }
-            <CategoryModal update={getProducts} createModal={createModal} setCreateModal={setCreateModal}/> 
+            {activeCategory ? <CityEditModal update={getCity} item={activeCategory} opened={opened} setOpened={() => setOpened(!opened)}/> : null }
+            <CityModal update={getCity} createModal={createModal} setCreateModal={setCreateModal}/>
 
             <div className={style.addProduct}>
-                <button onClick={() => setCreateModal(true)}>Добавить категорию</button>
+                <button onClick={() => setCreateModal(true)}>Добавить город</button>
             </div>
             <div className={style.searchDiv}>
                 <input value={value} onChange={(e) => setValue(e.target.value)} type="text"/>
@@ -44,7 +47,7 @@ const CategoriesList = () => {
             </div>
             <main className={style.table}>
                 <section className={style.tableHeader}>
-                    <h1>Список категорий</h1>
+                    <h1>Список городов</h1>
                 </section>
                 <section className={style.tableBody}>
                     <table style={{marginTop: "10px"}}>
@@ -55,16 +58,16 @@ const CategoriesList = () => {
                             </th>
 
                             <th>
-                                Название категории <span className="icon-arrow">↑</span>
+                                Название города <span className="icon-arrow">↑</span>
                             </th>
                         </tr>
                         </thead>
                         <tbody>
-                        {categories ? (
-                            categoriesSearch.map((item, i) => (
+                        {city ? (
+                            citySearch.map((item, i) => (
                                 <tr onClick={() => handleEdit(item)} key={i}>
                                     <td>{i + 1}</td>
-                                    <td>{item.category}</td>
+                                    <td>{item.city}</td>
                                 </tr>
                             ))
                         ) : (
@@ -80,4 +83,4 @@ const CategoriesList = () => {
     );
 };
 
-export default CategoriesList;
+export default CityList;

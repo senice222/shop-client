@@ -50,6 +50,9 @@ const ProductsList = () => {
                                 Категория <span className="icon-arrow">↑</span>
                             </th>
                             <th>
+                                Город <span className="icon-arrow">↑</span>
+                            </th>
+                            <th>
                                 Цена <span className="icon-arrow">↑</span>
                             </th>
                         </tr>
@@ -61,6 +64,7 @@ const ProductsList = () => {
                                     <td>{item.title}</td>
                                     <td>{item.gramm}</td>
                                     <td>{item.category}</td>
+                                    <td>{item.city}</td>
                                     <td>
                                         <strong>{item.price}</strong>
                                     </td>

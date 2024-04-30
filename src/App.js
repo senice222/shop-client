@@ -14,6 +14,7 @@ import DetailedProduct from "./pages/ProductsList/DetailedProduct/DetailedProduc
 import Requisite from "./pages/Requisite/Requisite";
 import { Comments } from './pages/Comments/Comments';
 import CategoriesList from "./pages/CategoriesList/CategoriesList";
+import CityList from "./pages/CitiesList/CityList";
 
 
 function App() {
@@ -89,6 +90,14 @@ function App() {
                     element: (
                         <ProtectedRoute>
                             <CategoriesList />
+                        </ProtectedRoute>
+                    )
+                },
+                {
+                    path: '/cities/list',
+                    element: (
+                        <ProtectedRoute>
+                            <CityList />
                         </ProtectedRoute>
                     )
                 }
