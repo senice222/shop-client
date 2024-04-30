@@ -1,7 +1,9 @@
 .purchase {
   width: 100vw;
   display: flex;
+  margin-top: 10px;
   flex-direction: column;
+  min-height: 75vh;
   align-items: center;
   .title {
     font-weight: 200;
@@ -11,6 +13,7 @@
     letter-spacing: 1px;
   }
   .description {
+    margin-bottom: 10px;
     font-weight: 400;
     font-size: 17px;
     line-height: 21px;

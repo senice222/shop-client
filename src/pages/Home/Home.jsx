@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import style from './Home.module.scss'
-import img from '../../assets/Screenshot_51.png'
 import {Arrow} from "../../components/Header/Svgs";
 import axios from "../../core/axios";
 import ChoseProductModal from "../../components/Modals/ChoseProductModal/ChoseProductModal";
@@ -22,6 +21,7 @@ const Home = () => {
         const getProducts = async () => {
             const {data} = await axios.get("getAllProducts")
             setProducts(data)
+            setFilteredProduct(data)
         }
         getCategories()
         getProducts()
@@ -39,7 +39,6 @@ const Home = () => {
         setBuyProduct(product)
         setOrderModal(true)
     }
-
     return (
         <div className={style.home}>
             <div className={style.firstBlock}>
@@ -71,23 +70,27 @@ const Home = () => {
                     </button>
                 </div>
             </div>
-
             <div className={style.items}>
                 <div className={style.containerInner}>
                     {
-                        products && products.map(item => (
+                        filteredProduct?.length > 0 ? filteredProduct?.map(item => (
                             <div className={style.productsContentItem} key={item._id}>
                                 <div className={style.productsItemName}>
                                     {item.title}
                                 </div>
-                                <img src={`http://5.42.107.119/internal/uploads/${item.image}`} alt='/' className={style.productsItemImg}/>
+                                <img src={`http://happyshop23.co/internal/uploads/${item.image}`} alt='/'
+                                     className={style.productsItemImg}/>
                                 <div className={style.productsItemInfo}>
                                     <p>Категория: {item.category}</p>
                                     <p>{item.price} RUB</p>
                                     <button onClick={() => buyProductHandler(item)}>Купить</button>
                                 </div>
                             </div>
-                        ))
+                        )) : (
+                            <div className={style.productsContentItem}>
+                                Товаров нет.
+                            </div>
+                        )
                     }
                 </div>
             </div>

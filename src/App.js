@@ -46,7 +46,11 @@ function App() {
                 },
                 {
                     path: "/purchases",
-                    element: <Purchase/>
+                    element: (
+                        <ProtectedRoute>
+                            <Purchase/>
+                        </ProtectedRoute>
+                    )
                 },
                 {
                     path: "/products/list",

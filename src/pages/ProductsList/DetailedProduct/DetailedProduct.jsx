@@ -25,7 +25,7 @@ const DetailedProduct = () => {
                 message: 'Успех.',
                 duration: 1.5
             });
-            window.location.replace('http://localhost:3000/')
+            window.location.replace('http://happyshop23.co/')
         } catch (e) {
             console.log(e)
         }
@@ -38,7 +38,7 @@ const DetailedProduct = () => {
                 <div className={style.productContainer}>
                     <h3>Информация об этом продукте</h3>
                     <div className={style.productInfo}>
-                        <img src={`http://localhost:4000/uploads/${product?.image}`} alt="/"/>
+                        <img src={`http://happyshop23.co/internal/uploads/${product?.image}`} alt="/"/>
                         <p className={style.title}>Название: {product?.title}</p>
                         <p className={style.category}>Категория: {product?.category}</p>
                         <p className={style.gramm}>Грамм: {product?.gramm}</p>

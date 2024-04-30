@@ -27,6 +27,7 @@
     .banner {
       background-image: url("https://i.ibb.co/Vg8MvqG/image.jpg");
       width: 1170px;
+      object-fit: cover;
       height: 200px;
       background-position: center;
       background-repeat: no-repeat;
@@ -57,11 +58,11 @@
       margin-left: 20px;
       height: 56px;
       cursor: pointer;
+      width: 140px;
       background: #3b3b3b;
       transition: all .3s ease-in-out;
       text-align: center;
       font-size: 16px;
-      line-height: 1;
       font-weight: 500;
       padding: 16px 31px;
       border: none;
@@ -89,6 +90,7 @@
           border-top: none;
           transition: .1s;
         }
+
         .li:hover {
           background: #292929 !important;
           color: #fff;
@@ -108,7 +110,8 @@
       border: 1px solid rgba(0, 0, 0, .5);
       -webkit-transition: all .3s ease;
       transition: all .3s ease;
-      line-height: 54px;
+      height: 54px;
+      //line-height: 54px;
       padding: 0 30px 0 20px;
       font-size: 14px;
       font-weight: 500;
@@ -142,6 +145,7 @@
     max-width: 1230px;
     padding: 0 30px;
     margin: 0 auto;
+    min-height: 600px;
 
     h2 {
       font-size: 32.5px;
@@ -157,9 +161,11 @@
     .containerInner {
       display: flex;
       flex-wrap: wrap;
+
       .productsContentItem:not(:first-child) {
         margin-left: 20px;
       }
+
       .productsContentItem {
         justify-content: space-between;
         display: -webkit-box;
@@ -225,7 +231,20 @@
   display: flex;
 }
 
+
 @media (max-width: 768px) {
+  .sectionDiv {
+    height: 56px !important;
+    width: 200px !important;
+    //line-height: 0px !important;
+  }
+  .btnFilter {
+    //margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
   .containerInner {
     display: flex;
     flex-direction: column;
@@ -234,5 +253,8 @@
     .productsContentItem {
       width: 90% !important;
     }
+  }
+  .inputs {
+    padding: 7px !important;
   }
 }

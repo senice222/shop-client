@@ -25,7 +25,7 @@ export const ChangeRequisites = ({setOpen, isOpened, info, update}) => {
     return (
         <div onClick={setOpen} className={`${s.modal} ${isOpened ? s.opened : ""}`}>
             <div onClick={(e) => e.stopPropagation()} className={s.content}>
-                <h2>Изменение реквизитов</h2>
+                <h2 className={s.titleReqs}>Изменение реквизитов</h2>
 
                 <div className={s.items}>
                     <div className={s.item}>

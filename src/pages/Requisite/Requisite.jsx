@@ -1,6 +1,5 @@
 import s from './Requisite.module.scss'
 import React, {useEffect, useState} from "react";
-import style from "../ProductsList/ProductsList.module.scss";
 import {ChangeRequisites} from "../../components/Modals/ChangeRequisites/ChangeRequisites";
 import axios from "../../core/axios";
 

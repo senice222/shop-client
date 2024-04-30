@@ -1,17 +1,40 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import s from './Reviews.module.scss'
 import ReviewItem from '../../components/ReviewItem/ReviewItem'
+import instance from "../../core/axios";
+import {CreateCommentModal} from "../../components/Modals/CreateCommentModal/CreateCommentModal";
+import {useDispatch, useSelector} from "react-redux";
 const Reviews = () => {
-  return (
-    <div className={s.reviews}>
-        <h1>Отзывы</h1>
+    const [reviews, setReviews] = useState()
+    const user = useSelector((state) => state.user).data
+    const [active, setActive] = useState()
 
-        <div className={s.list}>
-            <ReviewItem date={"15.04.2024"} name={"Витрина №1, НИЖНИЙ НОВГОРОД, 2г СК Super Speed 💎, Автозавод прикоп"} sum={'5500 RUB'} text={'Забрали, все дома,но есть одно но, пришлось пришлось искать пути обхода, местность рядом была вся в воде('}/>
-            <ReviewItem date={"15.04.2024"} name={"Витрина №1, НИЖНИЙ НОВГОРОД, 2г СК Super Speed 💎, Автозавод прикоп"} sum={'5500 RUB'} text={'Забрали, все дома,но есть одно но, пришлось пришлось искать пути обхода, местность рядом была вся в воде('}/>
-            <ReviewItem date={"15.04.2024"} name={"Витрина №1, НИЖНИЙ НОВГОРОД, 2г СК Super Speed 💎, Автозавод прикоп"} sum={'5500 RUB'} text={'Забрали, все дома,но есть одно но, пришлось пришлось искать пути обхода, местность рядом была вся в воде('}/>
-        </div>
-    </div>
+    const getReviews = async () => {
+        try {
+            const {data} = await instance.get('/reviews')
+            setReviews(data)
+            console.log(data)
+        } catch (e) {
+            console.log(e)
+        }
+
+    }
+
+    useEffect(() => {
+        getReviews()
+    }, [ ])
+  return (
+   <>
+       {user ? <CreateCommentModal update={getReviews} user={user} isAdmin={false} isOpened={active} setIsOpened={() => setActive(!active)}/> : null}
+       <div className={s.reviews}>
+           <h1>Отзывы</h1>
+
+           {reviews ? <div className={s.list}>
+               {reviews.map((item) => <ReviewItem date={item.date} name={item.productId} sum={item.sum} text={item.text} isAdmin={false} />)}
+           </div> : <h3>Loading...</h3>}
+           {user ? <button onClick={() => setActive(!active)}>Добавить отзыв</button> : null}
+       </div>
+   </>
   )
 }
 

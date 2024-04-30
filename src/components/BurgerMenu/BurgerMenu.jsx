@@ -1,30 +1,28 @@
 import React, { useState } from 'react';
 import styles from './BurgerMenu.module.scss';
-import {NavLink} from "react-router-dom";
-import s from "../Header/Header.module.scss";
-import {Dropdown} from "antd";
-import {Arrow, Key, Person} from "../Header/Svgs";
+import { NavLink } from "react-router-dom";
+import { Key, Person } from "../Header/Svgs";
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store/slices/userSlice';
 
-const Menu = ({isOpen, setIsOpen, user, setModal}) => {
+const Menu = ({ isOpen, setIsOpen, user, setModal }) => {
     const [isShowed, setIsShowed] = useState(false)
+    const dispatch = useDispatch()
 
 
     return (
         <div onClick={setIsOpen} className={`${styles.bgModal} ${isOpen ? styles.active : ""}`}>
             <div onClick={(e) => e.stopPropagation()} className={`${styles.menuContainer} ${isOpen ? styles.activeModal : ""}`}>
-               <div className={styles.header}>
-                   <img src="https://i.ibb.co/f9LVt37/logo.jpg" alt="logo"/>
-                   <button onClick={setIsOpen}>╳</button>
-               </div>
+                <div className={styles.header}>
+                    <img src="https://i.ibb.co/f9LVt37/logo.jpg" alt="logo" />
+                    <button onClick={setIsOpen}>╳</button>
+                </div>
                 <div className={styles.links}>
-                    <NavLink>
+                    <NavLink to={"/"}>
                         Товары
                     </NavLink>
-                    <NavLink>
+                    <NavLink to={"/reviews"}>
                         Отзывы
-                    </NavLink>
-                    <NavLink>
-                        Новости
                     </NavLink>
                     <NavLink>
                         Поддержка
@@ -41,33 +39,37 @@ const Menu = ({isOpen, setIsOpen, user, setModal}) => {
                     </div>
                 </div> : <div className={styles.vhodvihod}>
                     <div onClick={() => setModal("login")}>
-                        <Person/>
+                        <Person />
                         <p>Вход</p>
                     </div>
                     <div onClick={() => setModal("register")}>
-                        <Key/>
+                        <Key />
                         <p>Регистрация</p>
                     </div>
                 </div>}
                 <div className={`${styles.hided} ${isShowed ? styles.showed : ""}`}>
-                    <NavLink>
-                        Пополнить
-                    </NavLink>
-                    <NavLink>
-                        Мои пополнения
+                    <NavLink to="/purchases">
+                        Мои покупки
                     </NavLink>
                     <NavLink>
                         Партнерская программа
                     </NavLink>
-                    <NavLink>
-                        Мои покупки
-                    </NavLink>
+                    <a onClick={() => dispatch(logout())}>
+                        Выход
+                    </a>
                     {user?.status === "admin" ? <>
-                        <NavLink>Список продуктов</NavLink>
-                        <NavLink>Реквизиты</NavLink>
-                        <NavLink>Отзывы</NavLink>
-                        <NavLink>Пользователи</NavLink>
-                        <NavLink>Категории</NavLink>
+                        <NavLink to="/products/list">
+                            Список продуктов
+                        </NavLink>
+                        <NavLink to="/requisites">
+                            Реквизиты
+                        </NavLink>
+                        <NavLink to="/comments">
+                            Отзывы
+                        </NavLink>
+                        <NavLink to="/categories/list">
+                            Категории
+                        </NavLink>
                     </> : null}
                 </div>
             </div>

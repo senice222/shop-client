@@ -15,10 +15,29 @@
 //     }
 // }
 .comments {
+    display: flex;
+    flex-direction: column;
+
     .list {
         display: flex;
         width: 100vw;
         align-items: center;
         flex-direction: column;
+    }
+    button {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        align-self: center;
+        width: 150px;
+        cursor: pointer;
+        height: 40px;
+        border: none;
+        color: white;
+        background-color: #000000;
+        transition: .2s;
+        //padding: 7px;
+        &:hover {
+            background-color: rgba(38, 38, 38, 1);
+        }
     }
 }

@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-    paymentType: "rub"
+    paymentType: "ruCard"
 }
 
 export const paymentSlice = createSlice({
@@ -9,7 +9,6 @@ export const paymentSlice = createSlice({
     initialState,
     reducers: {
         chooseType: (state, action) => {
-            const variants = "rub" | "btc" | "usdt" | "ltc" | "xmr"
             state.paymentType = action.payload
         }
     }

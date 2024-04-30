@@ -9,12 +9,13 @@ import axios from "../../../core/axios";
 const ChoseProductModal = ({orderModal, setOrderModal, buyProduct}) => {
     const dispatch = useDispatch()
     const state = useSelector(state => state.payment.paymentType)
+    const user = useSelector(state => state.user.data)
     const getClassName = {
-        "rub": state === "rub" ? style.active : "",
-        "btc": state === "btc" ? style.active : "",
-        "usdt": state === "usdt" ? style.active : "",
-        "ltc": state === "ltc" ? style.active : "",
-        "xmr": state === "xmr" ? style.active : "",
+        "ruCard": state === "ruCard" ? style.active : "",
+        "btcAddress": state === "btcAddress" ? style.active : "",
+        "usdtTRC20Address": state === "usdtTRC20Address" ? style.active : "",
+        "liteCoin": state === "liteCoin" ? style.active : "",
+        "moneroXMR": state === "moneroXMR" ? style.active : "",
     };
 
     function generateOrderNumber() {
@@ -31,8 +32,20 @@ const ChoseProductModal = ({orderModal, setOrderModal, buyProduct}) => {
                 title: buyProduct?.title,
                 quantity: 1,
                 currency: state,
-                price: buyProduct?.price,
+                price: +buyProduct?.price,
             }
+            if (user) {
+                const bodyForUser = {
+                    _id: user?._id,
+                    orderName: orderHash,
+                    title: buyProduct?.title,
+                    quantity: 1,
+                    currency: state,
+                    price: +buyProduct?.price,
+                }
+                await axios.post("/user/addOrder", bodyForUser)
+            }
+            
             const {data} = await axios.post("/order/create", body)
             window.location.replace(`http://localhost:3000/order/info/${data.id}`)
         } catch (e) {
@@ -41,12 +54,12 @@ const ChoseProductModal = ({orderModal, setOrderModal, buyProduct}) => {
     }
 
     return (
-        <div className={orderModal ? `${style.modal} ${style.active}` : style.modal}
+        <div className={orderModal ? `${style.modal} ${style.active1}` : style.modal}
              onClick={() => setOrderModal(false)}>
             <div className={style.modalContent} onClick={(e) => e.stopPropagation()}>
                 <div className={style.leftContainer}>
                     <div className={style.imgDiv}>
-                        <img src={`http://localhost:4000/uploads/${buyProduct?.image}`} alt="/"/>
+                        <img src={`http://happyshop23.co/internal/uploads/${buyProduct?.image}`} alt="/"/>
                     </div>
                     <div className={style.priceDiv}>
                         <p>Итоговая цена : <b>{buyProduct?.price} RUB</b></p>
@@ -60,18 +73,18 @@ const ChoseProductModal = ({orderModal, setOrderModal, buyProduct}) => {
                     </div>
                     <div className={style.typeOfPayment}>
                         <p>Выберите метод оплаты</p>
-                        <div onClick={() => dispatch(chooseType("rub"))} className={getClassName["rub"]}>Перевод на
+                        <div onClick={() => dispatch(chooseType("ruCard"))} className={getClassName["ruCard"]}>Перевод на
                             карту (RUB)
                         </div>
-                        <div onClick={() => dispatch(chooseType("btc"))} className={getClassName["btc"]}>Bitcoin (BTC)
+                        <div onClick={() => dispatch(chooseType("btcAddress"))} className={getClassName["btcAddress"]}>Bitcoin (BTC)
                         </div>
-                        <div onClick={() => dispatch(chooseType("usdt"))} className={getClassName["usdt"]}>Tether TRC20
+                        <div onClick={() => dispatch(chooseType("usdtTRC20Address"))} className={getClassName["usdtTRC20Address"]}>Tether TRC20
                             (USDT)
                         </div>
-                        <div onClick={() => dispatch(chooseType("ltc"))} className={getClassName["ltc"]}>Litecoin
+                        <div onClick={() => dispatch(chooseType("liteCoin"))} className={getClassName["liteCoin"]}>Litecoin
                             (LTC)
                         </div>
-                        <div onClick={() => dispatch(chooseType("xmr"))} className={getClassName["xmr"]}>Monero (XMR)
+                        <div onClick={() => dispatch(chooseType("moneroXMR"))} className={getClassName["moneroXMR"]}>Monero (XMR)
                         </div>
                     </div>
                     <div className={style.promo}>

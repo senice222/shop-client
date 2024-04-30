@@ -44,7 +44,7 @@ const CategoriesList = () => {
             </div>
             <main className={style.table}>
                 <section className={style.tableHeader}>
-                    <h1>Список продуктов</h1>
+                    <h1>Список категорий</h1>
                 </section>
                 <section className={style.tableBody}>
                     <table style={{marginTop: "10px"}}>

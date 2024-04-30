@@ -10,14 +10,17 @@ export const AuthModal = ({isLogin, close}) => {
     const [secondPassword, setSecondPassword] = useState("")
     const [error, setError] = useState("")
     const user = useSelector(state => state.user)
+
     useEffect(() => {
         setError(user.error)
     }, [user.error])
+
     useEffect(() => {
         if (user.data?.login) {
             close()
         }
     }, [user])
+
     const handleBtn = () => {
         if (login.trim() !== "" && password.trim() !== "") {
             if (isLogin) {
@@ -37,8 +40,8 @@ export const AuthModal = ({isLogin, close}) => {
             <div onClick={(e) => e.stopPropagation()} className={s.content}>
                 <h1>{isLogin ? "Вход" : "Регистрация"}</h1>
                 <div className={s.inputs}>
-                    <input value={login} onChange={(e) => setLogin(e.target.value)} placeholder={"Логин"}/>
-                    <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder={"Пароль"}/>
+                    <input value={login} type="text" onChange={(e) => setLogin(e.target.value)} placeholder={"Логин"}/>
+                    <input value={password} type="password"  onChange={(e) => setPassword(e.target.value)} placeholder={"Пароль"}/>
                     {!isLogin ? <input value={secondPassword} onChange={(e) => setSecondPassword(e.target.value)}
                                        placeholder={"Повторите пароль"}/> : null}
                 </div>

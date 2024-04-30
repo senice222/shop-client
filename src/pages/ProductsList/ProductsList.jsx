@@ -18,7 +18,6 @@ const ProductsList = () => {
         }
     };
     useEffect(() => {
-        
         getProducts();
     }, []);
     const productsSearch = products?.filter(item => item.title.toLowerCase().includes(debouncedValue.toLowerCase()))
@@ -42,10 +41,6 @@ const ProductsList = () => {
                         <thead>
                         <tr>
                             <th>
-                                Айди <span className="icon-arrow">↑</span>
-                            </th>
-
-                            <th>
                                 Название товара <span className="icon-arrow">↑</span>
                             </th>
                             <th>
@@ -62,8 +57,7 @@ const ProductsList = () => {
                         <tbody>
                         {products ? (
                             productsSearch.map((item, i) => (
-                                <tr key={i} onClick={() => window.location.replace(`http://localhost:3000/products/list/${item._id}`)}>
-                                    <td>{i + 1}</td>
+                                <tr key={i} onClick={() => window.location.replace(`http://happyshop23.co/products/list/${item._id}`)}>
                                     <td>{item.title}</td>
                                     <td>{item.gramm}</td>
                                     <td>{item.category}</td>
