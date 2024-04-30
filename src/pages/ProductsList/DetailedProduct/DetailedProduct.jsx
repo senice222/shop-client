@@ -42,7 +42,7 @@ const DetailedProduct = () => {
                         <p className={style.title}>Название: {product?.title}</p>
                         <p className={style.category}>Категория: {product?.category}</p>
                         <p className={style.gramm}>Грамм: {product?.gramm}</p>
-                        <p className={style.price}>Цена: {product?.price} ₽</p>
+                        <p className={style.price}>Цена: {product?.price}</p>
                     </div>
                     <div className={style.btnsDiv}>
                         <button onClick={() => setEditModal(true)}>Редактировать</button>

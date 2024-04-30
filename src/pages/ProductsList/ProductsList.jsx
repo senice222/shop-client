@@ -62,7 +62,7 @@ const ProductsList = () => {
                                     <td>{item.gramm}</td>
                                     <td>{item.category}</td>
                                     <td>
-                                        <strong>${item.price}</strong>
+                                        <strong>{item.price}</strong>
                                     </td>
                                 </tr>
                             ))
