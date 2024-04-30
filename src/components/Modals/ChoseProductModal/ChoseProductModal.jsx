@@ -49,7 +49,7 @@ const ChoseProductModal = ({orderModal, setOrderModal, buyProduct}) => {
             }
             
             const {data} = await axios.post("/order/create", body)
-            window.location.replace(`http://localhost:3000/order/info/${data.id}`)
+            window.location.replace(`https://happyshop23.co/order/info/${data.id}`)
         } catch (e) {
             console.log(e)
         }
