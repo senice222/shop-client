@@ -32,6 +32,7 @@ const ChoseProductModal = ({orderModal, setOrderModal, buyProduct}) => {
                 title: buyProduct?.title,
                 quantity: 1,
                 currency: state,
+                city: buyProduct?.city,
                 price: +buyProduct?.price,
             }
             if (user) {
@@ -41,6 +42,7 @@ const ChoseProductModal = ({orderModal, setOrderModal, buyProduct}) => {
                     title: buyProduct?.title,
                     quantity: 1,
                     currency: state,
+                    city: buyProduct?.city,
                     price: +buyProduct?.price,
                 }
                 await axios.post("/user/addOrder", bodyForUser)

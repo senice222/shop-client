@@ -47,7 +47,7 @@ const Order = () => {
                                 </tr>
                                 <tr>
                                     <td className={style.orderStatic}>Наименование заказа</td>
-                                    <td>НИЖНИЙ НОВГОРОД, {order?.title}</td>
+                                    <td>{order?.city}, {order?.title}</td>
                                 </tr>
                                 <tr>
                                     <td className={style.orderStatic}>Количество</td>
