@@ -83,7 +83,7 @@ const Home = () => {
                                 <div className={style.productsItemInfo}>
                                     <p>Категория: {item.category}</p>
                                     <p>Город: {item.city}</p>
-                                    <p>{item.price} RUB</p>
+                                    <p>{item.price}</p>
                                     <button onClick={() => buyProductHandler(item)}>Купить</button>
                                 </div>
                             </div>
