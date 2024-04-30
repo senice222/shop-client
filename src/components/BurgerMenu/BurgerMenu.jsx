@@ -54,9 +54,11 @@ const Menu = ({ isOpen, setIsOpen, user, setModal }) => {
                     <NavLink>
                         Партнерская программа
                     </NavLink>
-                    <a onClick={() => dispatch(logout())}>
-                        Выход
-                    </a>
+                    {
+                        user && <a onClick={() => dispatch(logout())}>
+                            Выход
+                        </a>
+                    }
                     {user?.status === "admin" ? <>
                         <NavLink to="/products/list">
                             Список продуктов

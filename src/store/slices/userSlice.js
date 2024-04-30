@@ -19,7 +19,6 @@ export const fetchAuth = createAsyncThunk('user/fetchUserData', async (params) =
 export const fetchRegister = createAsyncThunk('user/fetchUserDataRegister', async (params) => {
     try {
         const {data} = await axios.post('user/register', params)
-        console.log(data)
         localStorage.setItem("token", data.token)
         return data
     } catch (e) {

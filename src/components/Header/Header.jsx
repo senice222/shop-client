@@ -32,7 +32,7 @@ export const Header = () => {
         {
             key: '4',
             label: (
-                <div className={s.itemLink} onClick={() => () => dispatch(logout())}>
+                <div className={s.itemLink} onClick={() => dispatch(logout())}>
                     <a>
                         Выйти
                     </a>

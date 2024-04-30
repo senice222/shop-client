@@ -42,7 +42,7 @@ export const AuthModal = ({isLogin, close}) => {
                 <div className={s.inputs}>
                     <input value={login} type="text" onChange={(e) => setLogin(e.target.value)} placeholder={"Логин"}/>
                     <input value={password} type="password"  onChange={(e) => setPassword(e.target.value)} placeholder={"Пароль"}/>
-                    {!isLogin ? <input value={secondPassword} onChange={(e) => setSecondPassword(e.target.value)}
+                    {!isLogin ? <input value={secondPassword} type="password" onChange={(e) => setSecondPassword(e.target.value)}
                                        placeholder={"Повторите пароль"}/> : null}
                 </div>
                 <button onClick={handleBtn}>Войти</button>
