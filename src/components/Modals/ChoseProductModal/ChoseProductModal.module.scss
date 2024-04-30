@@ -171,3 +171,18 @@
   opacity: 1;
   pointer-events: all;
 }
+
+@media (max-width: 768px) {
+  .modalContent {
+    width: 97% !important;
+    justify-content: center;
+    align-items: center;
+    min-width: 0px !important;
+  }
+  .imgDiv, .priceDiv, .leftContainer {
+    display: none !important;
+  }
+  .promoBtn {
+    width: 100% !important;
+  }
+}

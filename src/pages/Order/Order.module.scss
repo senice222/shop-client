@@ -111,3 +111,12 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .orderBlock {
+    padding: 13px 20px !important;
+  }
+  .orderStatic {
+    width: 150px !important;
+  }
+}
