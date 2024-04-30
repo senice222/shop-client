@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import style from './EditProductModal.module.scss'
 import {Button, Form, Input, notification} from 'antd';
 import axios from "../../../core/axios";
-import { Select } from 'antd'
+import {Select} from 'antd'
 
 
 const MyFormItemContext = React.createContext([]);
@@ -21,45 +21,61 @@ const EditProductModal = ({product, modal, setModal}) => {
     const [values, setValues] = useState({
         title: '',
         category: '',
+        city: '',
         gramm: '',
         price: '',
     });
-    const {title, category, gramm, price} = values;
-    const [category2, setCategory2] = useState()
+    const {title, category, gramm, city, price} = values;
     const [categories, setCategories] = useState()
+    const [cities, setCities] = useState()
 
     useEffect(() => {
         const getCategories = async () => {
             try {
                 const {data} = await axios.get('/category/list')
-                    setCategories(data)    
-                    console.log(categories)     
+                setCategories(data)
             } catch (e) {
                 console.log(e)
             }
         }
+        const getCity = async () => {
+            try {
+                const {data} = await axios.get('/city/list')
+                setCities(data)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        getCity()
         getCategories()
-    }, [ ])
+    }, [])
+
     const handleCategory = (item) => {
-        setValues({
-            title: values.title,
-            category: item,
-            gramm: values.gramm,
-            price: values.price
-        })
+        setValues(prevValues => ({
+            ...prevValues,
+            category: item
+        }));
     }
+
+    const handleCity = (item) => {
+        setValues(prevValues => ({
+            ...prevValues,
+            city: item
+        }));
+    }
+
     const loadProfile = () => {
         setValues(prev => {
             return {
                 ...prev,
                 title: product?.title,
-                category: product?.category, // тут категория из бд должна быть
+                category: product?.category,
+                city: product?.city,
                 gramm: product?.gramm,
                 price: product?.price
             };
         });
     }
-
     useEffect(() => {
         loadProfile();
     }, [product]);
@@ -76,7 +92,6 @@ const EditProductModal = ({product, modal, setModal}) => {
             console.log(e)
         }
     };
-
     return (
         <div className={modal ? `${style.modal} ${style.active}` : style.modal}
              onClick={() => setModal(false)}>
@@ -95,6 +110,10 @@ const EditProductModal = ({product, modal, setModal}) => {
                             value: category,
                         },
                         {
+                            name: ["city"],
+                            value: city,
+                        },
+                        {
                             name: ["gramm"],
                             value: gramm,
                         },
@@ -108,9 +127,9 @@ const EditProductModal = ({product, modal, setModal}) => {
                         <Input/>
                     </MyFormItem>
                     <MyFormItem name="category" label="Категория">
-                    {categories ? <Select
+                        {categories ? <Select
                             defaultValue={category}
-                            style={{ width: '95%', zIndex: "999999" }}
+                            style={{width: '95%', zIndex: "999999"}}
                             onChange={handleCategory}
                             options={
                                 categories.map((item) => {
@@ -119,7 +138,21 @@ const EditProductModal = ({product, modal, setModal}) => {
                                     }
                                 })
                             }
-                        />   : <p>Loading...</p>} 
+                        /> : <p>Loading...</p>}
+                    </MyFormItem>
+                    <MyFormItem name="city" label="Город">
+                        {cities ? <Select
+                            defaultValue={category}
+                            style={{width: '95%', zIndex: "999999"}}
+                            onChange={handleCity}
+                            options={
+                                cities.map((item) => {
+                                    return {
+                                        value: item.city, label: item.city
+                                    }
+                                })
+                            }
+                        /> : <p>Loading...</p>}
                     </MyFormItem>
                     <MyFormItem name="gramm" label="Грамм">
                         <Input/>

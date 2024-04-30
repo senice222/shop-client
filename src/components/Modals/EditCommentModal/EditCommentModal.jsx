@@ -12,6 +12,7 @@ export const EditCommentModal = ({setOpen, isOpenen, active, update}) => {
         setSum(active.sum)
         setText(active.text)
     }, [active])
+
     const handleSave = async () => {
         try {
             const {data} = await instance.post(`/editReview/${active._id}`, {date, productId, sum, text})
