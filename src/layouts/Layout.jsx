@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom'
 import {fetchAuthMe} from "../store/slices/userSlice";
 import {useDispatch} from "react-redux";
 import { Footer } from '../components/Footer/Footer';
+import { CityModalStart } from '../components/Modals/CityModalStart/CityModalStart';
 const Layout = ({children}) => {
     const dispatch = useDispatch()
     useEffect(() => {
@@ -12,6 +13,7 @@ const Layout = ({children}) => {
     }, [])
     return (
         <div className={style.wrapper}>
+            <CityModalStart />
             <Header />
             <Outlet />
             <Footer />

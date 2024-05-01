@@ -1,7 +1,7 @@
 import axios from "axios";
-
+const url = 'https://happyshop23.co/internal'
 const instance = axios.create({
-    baseURL: 'https://happyshop23.co/internal',
+    baseURL: url,
     headers: { Authorization: window.localStorage.getItem('token') },
 })
 

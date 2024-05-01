@@ -18,23 +18,28 @@ const Home = () => {
             const {data} = await axios.get("category/list")
             setCategories(data)
         }
+
         const getProducts = async () => {
+            const city = localStorage.getItem('city')
             const {data} = await axios.get("getAllProducts")
-            setProducts(data)
-            setFilteredProduct(data)
+            const normalizedProducts = data.filter((item) => item.city === city)
+            console.log(normalizedProducts)
+            setProducts(normalizedProducts)
+            setFilteredProduct(normalizedProducts)
         }
         getCategories()
         getProducts()
     }, []);
-
+    
     const filterProducts = (category) => {
         const normalizedCategory = category.toLowerCase().trim()
         const filteredProducts = products.filter(item => item.category.toLowerCase().trim() === normalizedCategory)
         setChoseCategory(category)
         setFilteredProduct(filteredProducts)
         setIsOpen(false)
+        console.log(products)
     }
-
+    
     const buyProductHandler = (product) => {
         setBuyProduct(product)
         setOrderModal(true)
