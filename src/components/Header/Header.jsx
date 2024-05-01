@@ -111,7 +111,7 @@ export const Header = () => {
                         <NavLink to="/reviews">ОТЗЫВЫ</NavLink>
                     </div>
                     <div>
-                        <a>ПОДДЕРЖКА</a>
+                        <a href={'https://t.me/Fashion2O23nn'}>ПОДДЕРЖКА</a>
                     </div>
                 </div>
                 <button onClick={() => setIsOpen(!isOpen)} className={s.burgerButton}>☰</button>
