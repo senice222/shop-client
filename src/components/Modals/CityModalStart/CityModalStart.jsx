@@ -1,55 +1,48 @@
 import { useEffect, useState } from 'react'
 import s from './CityModalStart.module.scss'
 import { Select } from 'antd'
-
 import instance from '../../../core/axios'
 
-export const CityModalStart = () => {
-        const [opened, setOpened] = useState(false)
-        const [city, setCity] = useState()
-        const [setedCity, setSetedCity] = useState()
-        const getCity = async () => {
-            try {
-                const { data } = await instance.get('/city/list')
-                setCity(data)
-            } catch (e) {
-                console.log(e)
-            }
+export const CityModalStart = ({opened, setOpened}) => {
+    const [city, setCity] = useState()
+    const [setedCity, setSetedCity] = useState()
+
+    const getCity = async () => {
+        try {
+            const { data } = await instance.get('/city/list')
+            setCity(data)
+        } catch (e) {
+            console.log(e)
         }
-        useEffect(() => {
-            const city1 = localStorage.getItem('city')
+    }
 
-            if (!city1) {
-                setOpened(true)
-            }
+    useEffect(() => {
+        getCity()
+    }, [])
 
-            getCity()
-        }, [ ])
-        console.log(setedCity)
-
-        const handleSave = () => {
-            if (setedCity) {
-                localStorage.setItem('city', setedCity)
-                window.location.reload()
-            }
+    const handleSave = () => {
+        if (setedCity) {
+            localStorage.setItem('city', setedCity)
+            window.location.reload()
         }
+    }
     return (
-        <div className={`${s.bg} ${opened ? s.active : ""}`}>
-            <div className={s.modal}>
+        <div className={`${s.bg} ${opened ? s.active : ""}`} onClick={() => setOpened(false)}>
+            <div className={s.modal} onClick={(e) => e.stopPropagation()}>
                 <h3>Выберите ваш город:</h3>
 
                 {city ? <Select
-                            defaultValue="Выберите город"
-                            style={{ width: '95%', zIndex: "999999" }}
-                            onChange={setSetedCity}
-                            options={
-                                city.map((item) => {
-                                    return {
-                                        value: item.city, label: item.city
-                                    }
-                                })
+                    defaultValue={localStorage.getItem('city') ? localStorage.getItem('city')  : "Выберите город"}
+                    style={{ width: '95%', zIndex: "999999" }}
+                    onChange={setSetedCity}
+                    options={
+                        city.map((item) => {
+                            return {
+                                value: item.city, label: item.city
                             }
-                        /> : <p>Loading...</p>}
+                        })
+                    }
+                /> : <p>Loading...</p>}
                 <button onClick={handleSave}>Сохранить</button>
 
             </div>

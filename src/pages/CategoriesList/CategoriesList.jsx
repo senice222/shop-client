@@ -12,6 +12,7 @@ const CategoriesList = () => {
     const [createModal, setCreateModal] = useState(false)
     const [opened, setOpened] = useState(false)
     const [activeCategory, setActiveCategory] = useState()
+
     const getProducts = async () => {
         try {
             const {data} = await instance.get("/category/list");
@@ -20,10 +21,11 @@ const CategoriesList = () => {
             console.error("Error fetching products:", error);
         }
     };
+
     useEffect(() => {
-        
         getProducts();
     }, []);
+
     const categoriesSearch = categories?.filter(item => item.category.toLowerCase().includes(debouncedValue.toLowerCase()))
     const handleEdit = (item) => {
         setActiveCategory(item)
@@ -53,9 +55,11 @@ const CategoriesList = () => {
                             <th>
                                 Айди <span className="icon-arrow">↑</span>
                             </th>
-
                             <th>
                                 Название категории <span className="icon-arrow">↑</span>
+                            </th>
+                            <th>
+                                Название города <span className="icon-arrow">↑</span>
                             </th>
                         </tr>
                         </thead>
@@ -65,6 +69,7 @@ const CategoriesList = () => {
                                 <tr onClick={() => handleEdit(item)} key={i}>
                                     <td>{i + 1}</td>
                                     <td>{item.category}</td>
+                                    <td>{item.city}</td>
                                 </tr>
                             ))
                         ) : (

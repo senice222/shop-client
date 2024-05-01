@@ -13,7 +13,7 @@
     top: 0;
     .modal {
         width: 400px;
-        height: 400px;
+        height: 200px;
         background-color: white;
         display: flex;
         flex-direction: column;
@@ -48,4 +48,11 @@
 .active {
     pointer-events: all;
     opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }

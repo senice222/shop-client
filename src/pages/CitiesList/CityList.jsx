@@ -2,8 +2,6 @@ import React, {useEffect, useState} from 'react';
 import style from './CityList.module.scss'
 import {useDebounce} from "../../hooks/useDebouce";
 import instance from "../../core/axios";
-import CategoryModal from "../../components/Modals/CategoryModal/CategoryModal";
-import { CategoryEditModal } from '../../components/Modals/CategoryModal/CategoryEditModal';
 import CityModal from "../../components/Modals/CityModal/CityModal";
 import {CityEditModal} from "../../components/Modals/CityModal/CityEditModal";
 

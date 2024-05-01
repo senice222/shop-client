@@ -3,7 +3,7 @@ import s from './Reviews.module.scss'
 import ReviewItem from '../../components/ReviewItem/ReviewItem'
 import instance from "../../core/axios";
 import {CreateCommentModal} from "../../components/Modals/CreateCommentModal/CreateCommentModal";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 const Reviews = () => {
     const [reviews, setReviews] = useState()
     const user = useSelector((state) => state.user).data
@@ -32,7 +32,6 @@ const Reviews = () => {
            {reviews ? <div className={s.list}>
                {reviews.map((item) => <ReviewItem date={item.date} name={item.productId} sum={item.sum} text={item.text} isAdmin={false} />)}
            </div> : <h3>Loading...</h3>}
-           {user ? <button onClick={() => setActive(!active)}>Добавить отзыв</button> : null}
        </div>
    </>
   )

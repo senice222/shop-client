@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import style from './CategoryModal.module.scss'
-import {Button, Form, Input, notification} from "antd";
+import {Button, Form, Input, notification, Select} from "antd";
 import axios from "../../../core/axios";
 
 const MyFormItemContext = React.createContext([]);
@@ -9,13 +9,16 @@ function toArr(str) {
     return Array.isArray(str) ? str : [str];
 }
 
-const MyFormItem = ({name, ...props}) => {
+const MyFormItem = ({ name, ...props }) => {
     const prefixPath = React.useContext(MyFormItemContext);
     const concatName = name !== undefined ? [...prefixPath, ...toArr(name)] : undefined;
     return <Form.Item name={concatName} {...props} />;
 };
 
-const CategoryModal = ({update, createModal, setCreateModal}) => {
+const CategoryModal = ({ update, createModal, setCreateModal }) => {
+    const [cities, setCities] = useState()
+    const [cityCheckbox, setCityCheckbox] = useState()
+
     const onFinish = async (value) => {
         try {
             await axios.post(`/category/create`, value)
@@ -31,9 +34,20 @@ const CategoryModal = ({update, createModal, setCreateModal}) => {
         }
     };
 
+    useEffect(() => {
+        const getCity = async () => {
+            try {
+                const { data } = await axios.get('/city/list')
+                setCities(data)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        getCity()
+    }, [])
     return (
         <div className={`${style.modal} ${createModal ? style.active : ""}`}
-             onClick={() => setCreateModal(false)}>
+            onClick={() => setCreateModal(false)}>
             <div className={style.modalContent} onClick={(e) => e.stopPropagation()}>
                 <Form
                     name="form_item_path"
@@ -41,7 +55,21 @@ const CategoryModal = ({update, createModal, setCreateModal}) => {
                     onFinish={onFinish}
                 >
                     <MyFormItem name="category" label="Название">
-                        <Input/>
+                        <Input />
+                    </MyFormItem>
+                    <MyFormItem name="city" label="Город">
+                        {cities ? <Select
+                            defaultValue="Выберите город"
+                            style={{ zIndex: "10000 !important" }}
+                            onChange={setCityCheckbox}
+                            options={
+                                cities.map((item) => {
+                                    return {
+                                        value: item.city, label: item.city
+                                    }
+                                })
+                            }
+                        /> : <p>Loading...</p>}
                     </MyFormItem>
                     <Button type="primary" htmlType="submit">
                         Добавить

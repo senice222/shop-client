@@ -226,6 +226,10 @@
   }
 
 }
+.changeCity {
+  width: 170px !important;
+  padding: 5px !important;
+}
 
 .inf {
   display: flex;
@@ -233,17 +237,27 @@
 
 
 @media (max-width: 768px) {
+  .hid {
+    display: none !important;
+  }
   .sectionDiv {
     height: 56px !important;
     width: 200px !important;
     //line-height: 0px !important;
   }
+  .inputs {
+    flex-direction: column;
+  }
   .btnFilter {
-    //margin-right: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
     width: 100%;
+    margin-left: 0px !important;
+  }
+  .li {
+    width: 55.5%;
   }
   .containerInner {
     display: flex;
