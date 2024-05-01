@@ -32,7 +32,7 @@
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      margin-bottom: 90px;
+      margin-bottom: 64px;
       position: relative;
       @media (max-width: 1170px) {
         width: 95vw;
@@ -52,10 +52,11 @@
     padding: 0 30px;
     margin: 0 auto;
     display: flex;
+    margin-bottom: 15px;
 
     .btnFilter {
       color: #fff;
-      margin-left: 20px;
+      //margin-left: 20px;
       height: 56px;
       cursor: pointer;
       width: 140px;
@@ -74,6 +75,7 @@
     }
 
     .section {
+      //margin-left: 10px;
       .ul {
         list-style: none;
         margin: 0;
@@ -101,7 +103,7 @@
     }
 
     .section:not(:first-child) {
-      margin-left: 30px;
+      margin-left: 20px;
     }
 
     .sectionDiv {
@@ -173,7 +175,7 @@
         display: flex;
         flex-direction: column;
         margin-left: 20px;
-        width: 25%;
+        width: 23%;
         margin: 0 0 60px 0;
         margin-top: 10px;
         padding: 10px;
@@ -235,6 +237,9 @@
   display: flex;
 }
 
+.btnFilter:not(:first-child) {
+  margin-left: 30px;
+}
 
 @media (max-width: 768px) {
   .hid {
@@ -262,6 +267,7 @@
   .containerInner {
     display: flex;
     flex-direction: column;
+    margin-top: 10px;
     align-items: center;
 
     .productsContentItem {
