@@ -24,7 +24,62 @@
   }
 }
 
+.option {
+  // line-height: 40px; 
+  // color: #333;
+  // padding: 5px 10px;
+  min-height: 32px;
+  padding: 5px 12px;
+  color: rgba(0, 0, 0, 0.88);
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border-radius: 4px;
+}
+
+.option:hover {
+  background-color: #f0f0f0;
+}
+
+.option:focus {
+  outline: none;
+  background-color: #f0f0f0;
+}
+
+.inputZ {
+  padding: 5px 12px;
+  color: rgba(0, 0, 0, 0.88);
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 32px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  background: #ffffff;
+  outline: none;
+  padding: 0 11px;
+  transition: .1s;
+}
+
+.inputZ:hover {
+  border-color: #4096ff
+}
+
+.inputZ::after {
+  box-shadow: 0 0 0 2px rgba(5, 145, 255, 0.1);
+  border-color: #1677ff;
+  outline: none;
+}
+
 .active {
   opacity: 1;
   pointer-events: all;
-} 
+}

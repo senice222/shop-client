@@ -88,18 +88,24 @@ const AddModal = ({ createModal, setCreateModal, update }) => {
                         <Input />
                     </MyFormItem>
                     <MyFormItem name="category" label="Категория">
-                        {categories ? <Select
-                            defaultValue="Выберите категорию"
-                            style={{ width: '95%', zIndex: "999999" }}
-                            onChange={setCategory}
-                            options={
-                                categories.map((item) => {
-                                    return {
-                                        value: item.category, label: item.category
-                                    }
-                                })
-                            }
-                        /> : <p>Loading...</p>}
+                        {categories ?
+                            <div className={style.categoryDiv}>
+                                <select
+                                    defaultValue="Выберите категорию"
+                                    style={{ width: '95%', zIndex: "999999" }}
+                                    className={style.inputZ}
+                                    onChange={(e) => setCategory(e.target.value)}
+                                >
+                                    <option disabled>Выберите категорию</option>
+                                    {categories.map((item, index) => (
+                                        <option key={index} className={style.option} value={item.category}>
+                                            {item.category}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            : <p>Loading...</p>}
                     </MyFormItem>
                     <MyFormItem name="city" label="Город">
                         {city ? <Select
