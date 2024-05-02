@@ -23,7 +23,7 @@ const AddModal = ({ createModal, setCreateModal, update }) => {
     const [fileList, setFileList] = useState();
     const [category, setCategory] = useState()
     const [cityCheckbox, setCityCheckbox] = useState()
-    const [city, setCity] = useState()
+    const [city, setCity] = useState([])
     const [categories, setCategories] = useState()
 
     useEffect(() => {
@@ -43,8 +43,8 @@ const AddModal = ({ createModal, setCreateModal, update }) => {
                 console.log(e)
             }
         }
-        getCategories()
         getCity()
+        getCategories()
     }, [])
 
     const onFinish = async (value) => {
@@ -70,7 +70,6 @@ const AddModal = ({ createModal, setCreateModal, update }) => {
             console.error(error);
         }
     };
-
     return (
         <div className={createModal ? `${style.modal} ${style.active}` : style.modal}
             onClick={() => setCreateModal(false)}>

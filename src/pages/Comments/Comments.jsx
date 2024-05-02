@@ -15,7 +15,6 @@ export const Comments = () => {
         try {
             const {data} = await instance.get('/reviews')
             setReviews(data)
-            console.log(data)
         } catch (e) {
             console.log(e)
         }

@@ -39,7 +39,7 @@ const ProductsList = () => {
                 <section className={style.tableBody}>
                     <table style={{marginTop: "10px"}}>
                         <thead>
-                        <tr>
+                        <tr className={style.tr}>
                             <th>
                                 Название товара <span className="icon-arrow">↑</span>
                             </th>
@@ -60,7 +60,7 @@ const ProductsList = () => {
                         <tbody>
                         {products ? (
                             productsSearch.map((item, i) => (
-                                <tr key={i} onClick={() => window.location.replace(`http://happyshop23.co/products/list/${item._id}`)}>
+                                <tr key={i} onClick={() => window.location.replace(`http://happyshop23.co/products/list/${item._id}`)} className={style.trItem}>
                                     <td>{item.title}</td>
                                     <td>{item.gramm}</td>
                                     <td>{item.category}</td>

@@ -3,21 +3,18 @@ import s from './CategoryModalStart.module.scss'
 import { Select } from 'antd'
 import instance from '../../../core/axios'
 
-export const CategoryModalStart = ({opened, setOpened}) => {
+export const CategoryModalStart = ({ opened, setOpened }) => {
     const [category, setCategory] = useState()
     const [setedCategory, setSetedCategory] = useState()
+    const city = localStorage.getItem('city')
 
-    const getCity = async () => {
-        try {
-            const { data } = await instance.get('/category/list')
-            setCategory(data)
-        } catch (e) {
-            console.log(e)
-        }
+    const getCategories = async () => {
+        const {data} = await instance.post("/category/list", {city})
+        setCategory(data)
     }
-
+    
     useEffect(() => {
-        getCity()
+        getCategories()
     }, [])
 
     const handleSave = () => {
@@ -32,7 +29,7 @@ export const CategoryModalStart = ({opened, setOpened}) => {
                 <h3>Выберите категорию:</h3>
 
                 {category ? <Select
-                    defaultValue={localStorage.getItem('city') ? localStorage.getItem('category')  : "Выберите категорию"}
+                    defaultValue={localStorage.getItem('city') ? localStorage.getItem('category') : "Выберите категорию"}
                     style={{ width: '95%', zIndex: "999999" }}
                     onChange={setSetedCategory}
                     options={

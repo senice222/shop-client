@@ -4,7 +4,6 @@ import {useSelector} from "react-redux";
 
 export const Purchase = () => {
     const state = useSelector(state => state.user.data)
-    console.log(state)
     return (
         <div className={s.purchase}>
             <h1 className={s.title}>Мои покупки</h1>

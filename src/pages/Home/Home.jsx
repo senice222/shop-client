@@ -1,16 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import style from './Home.module.scss'
-import {Arrow} from "../../components/Header/Svgs";
 import axios from "../../core/axios";
 import ChoseProductModal from "../../components/Modals/ChoseProductModal/ChoseProductModal";
 import {CityModalStart} from '../../components/Modals/CityModalStart/CityModalStart';
 import {CategoryModalStart} from "../../components/Modals/CategoryModalStart/CategoryModalStart";
 
 const Home = () => {
-    const [isOpen, setIsOpen] = useState(false)
     const [categories, setCategories] = useState()
     const [products, setProducts] = useState()
-    const [choseCategory, setChoseCategory] = useState("Выберите категорию")
     const [filteredProduct, setFilteredProduct] = useState()
     const [orderModal, setOrderModal] = useState(false)
     const [buyProduct, setBuyProduct] = useState()
@@ -20,6 +17,7 @@ const Home = () => {
     useEffect(() => {
         const city = localStorage.getItem('city')
         const category = localStorage.getItem('category')
+
         const getCategories = async () => {
             const {data} = await axios.post("/category/list", {city})
             setCategories(data)
@@ -41,7 +39,6 @@ const Home = () => {
         getCategories()
         getProducts()
     }, []);
-
     const buyProductHandler = (product) => {
         setBuyProduct(product)
         setOrderModal(true)

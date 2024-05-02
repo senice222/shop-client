@@ -98,7 +98,30 @@
   .tableBody {
     //width: 60% !important;
   }
+  thead {
+    display: block;
+    flex-direction: column;
+    margin-left: 150px;
+  }
+  .table {
+    th {
+      font-size: 11px;
+    }
+  }
+  .tr {
+    margin-left: 155px;
+  }
+  tbody {
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    margin-left: 160px;
+  }
+  .trItem {
+    width: 500px !important;
+  }
   td {
+    font-size: 13px;
     width: 50px;
   }
   span {
