@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import style from './Home.module.scss'
 import axios from "../../core/axios";
 import ChoseProductModal from "../../components/Modals/ChoseProductModal/ChoseProductModal";
-import {CityModalStart} from '../../components/Modals/CityModalStart/CityModalStart';
-import {CategoryModalStart} from "../../components/Modals/CategoryModalStart/CategoryModalStart";
+import { CityModalStart } from '../../components/Modals/CityModalStart/CityModalStart';
+import { CategoryModalStart } from "../../components/Modals/CategoryModalStart/CategoryModalStart";
 
 const Home = () => {
     const [categories, setCategories] = useState()
@@ -19,12 +19,12 @@ const Home = () => {
         const category = localStorage.getItem('category')
 
         const getCategories = async () => {
-            const {data} = await axios.post("/category/list", {city})
+            const { data } = await axios.post("/category/list", { city })
             setCategories(data)
         }
 
         const getProducts = async () => {
-            const {data} = await axios.get("/getAllProducts")
+            const { data } = await axios.get("/getAllProducts")
             if (city && category) {
                 const normalizedProducts = data.filter((item) => {
                     return item.city === city && item.category === category;
@@ -45,8 +45,8 @@ const Home = () => {
     }
     return (
         <>
-            <CityModalStart opened={opened} setOpened={setOpened}/>
-            <CategoryModalStart opened={openedCategory} setOpened={setOpenedCategory}/>
+            <CityModalStart opened={opened} setOpened={setOpened} />
+            <CategoryModalStart opened={openedCategory} setOpened={setOpenedCategory} />
             <div className={style.home}>
                 <div className={style.firstBlock}>
                     <h1>FASHION</h1>
@@ -55,15 +55,15 @@ const Home = () => {
                 <div className={style.inputs}>
                     <div className={style.section}>
                         <button className={`${style.btnFilter} ${style.changeCity}`}
-                                onClick={() => setOpenedCategory(true)}>Выберите категорию
+                            onClick={() => setOpened(true)}>Выберите город
                         </button>
                     </div>
                     <div className={style.section}>
                         <button className={`${style.btnFilter} ${style.changeCity}`}
-                                onClick={() => setOpened(true)}>Выберите город
+                            onClick={() => setOpenedCategory(true)}>Выберите категорию
                         </button>
                     </div>
-                    <div className={style.section} style={{height: "56px"}}>
+                    <div className={style.section} style={{ height: "56px" }}>
                         <button className={`${style.btnFilter} ${style.hid}`}>
                             Показать
                         </button>
@@ -78,7 +78,7 @@ const Home = () => {
                                         {item.title}
                                     </div>
                                     <img src={`http://happyshop23.co/internal/uploads/${item.image}`} alt='/'
-                                         className={style.productsItemImg}/>
+                                        className={style.productsItemImg} />
                                     <div className={style.productsItemInfo}>
                                         <p>Категория: {item.category}</p>
                                         <p>Город: {item.city}</p>
@@ -94,7 +94,7 @@ const Home = () => {
                         }
                     </div>
                 </div>
-                <ChoseProductModal orderModal={orderModal} setOrderModal={setOrderModal} buyProduct={buyProduct}/>
+                <ChoseProductModal orderModal={orderModal} setOrderModal={setOrderModal} buyProduct={buyProduct} />
             </div>
         </>
     )
