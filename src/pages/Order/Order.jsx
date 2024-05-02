@@ -93,9 +93,9 @@ const Order = () => {
                             </tbody>
                         </table>
                     </div>
-                    <div className={style.orderBottom}>
+                    <div className={style.orderBottom} onClick={() => navigate('/')}>
                         <button>
-                            <span onClick={() => navigate('/')}>На главную</span>
+                            <span>На главную</span>
                         </button>
                         
                     </div>
