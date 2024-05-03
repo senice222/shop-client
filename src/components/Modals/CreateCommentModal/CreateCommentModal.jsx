@@ -2,12 +2,10 @@ import s from './CreateCommentModal.module.scss'
 import instance from "../../../core/axios";
 import React, {useEffect, useState} from "react";
 import {Select} from "antd";
-import {useDispatch} from "react-redux";
 
 export const CreateCommentModal = ({isOpened, setIsOpened, user, update, isAdmin}) => {
     const [products, setProducts] = useState()
     const [choosedProduct, setChoosedProduct] = useState()
-    const [userName, setUserName] = useState()
     const [price, setPrice] = useState()
     const [text, setText] = useState()
     const date = new Date()
@@ -26,11 +24,8 @@ export const CreateCommentModal = ({isOpened, setIsOpened, user, update, isAdmin
     }, []);
 
     const handleSave = async () => {
-        if (!isAdmin) {
-            setUserName(user.login)
-        }
         try {
-            if (userName && choosedProduct && userName && price && text) {
+            if (choosedProduct && price && text) {
                 const {data} = await instance.post('/createReview', {
                     date: `${date.getDate()}.0${date.getMonth()+1}.${date.getFullYear()}`,
                     productId: choosedProduct,
@@ -51,11 +46,7 @@ export const CreateCommentModal = ({isOpened, setIsOpened, user, update, isAdmin
             <div onClick={(e) => e.stopPropagation()} className={s.content}>
                 <h1>Создание отзыва</h1>
                 <div className={s.items}>
-                    {isAdmin ? <>
-                        <h2>Имя пользователя</h2>
-
-                        <input value={userName} onChange={(e) => setUserName(e.target.value)} placeholder={"Vasya_Pro"}/>
-                    </> : null}
+                
                     <h2>Выберите товар</h2>
 
                     {products ? <Select
