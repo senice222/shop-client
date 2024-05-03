@@ -25,20 +25,7 @@ const Order = () => {
         }
         getRequisites()
     }, [])
-    function generateTXID() {
-        let result = '';
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     
-        for (let i = 0; i < 8; i++) {
-            result += characters.charAt(Math.floor(Math.random() * characters.length));
-        }
-    
-        return result;
-    }
-    
-    
-    const txid = generateTXID();
-    console.log(order);
     const firstEl = requisites?.[0]
     const getPrice = firstEl?.[order?.currency]
 
@@ -57,7 +44,7 @@ const Order = () => {
                                 </tr>
                                 <tr>
                                     <td>TXID</td>
-                                    <td>{txid}</td>
+                                    <td>{order?.txId}</td>
                                 </tr>
                                 <tr>
                                     <td className={style.orderStatic}>Наименование заказа</td>
