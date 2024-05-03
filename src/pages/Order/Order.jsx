@@ -60,7 +60,7 @@ const Order = () => {
                                 </tr>
                                 <tr>
                                     <td className={style.orderStatic}>Цена</td>
-                                    <td>{order?.currency === "ruCard" ? order?.price : order?.price.toFixed(3)}</td>
+                                    <td>{order?.currency === "ruCard" ? order?.price : order?.price.toFixed(5)}</td>
                                 </tr>
                                 <tr>
                                     <td>Время на оплату</td>
@@ -72,7 +72,7 @@ const Order = () => {
                                     <td>Статус</td>
                                     <td className={style.orderStatic}>
                                         <span className={style.waitPayment}>Ожидается оплата</span>
-                                        <p>Ожидается {order?.currency === "ruCard" ? order?.price : order?.price.toFixed(3)} "Тип оплаты: {order?.currency}" на реквизиты:</p>
+                                        <p>Ожидается {order?.currency === "ruCard" ? order?.price : order?.price.toFixed(5)} "Тип оплаты: {order?.currency}" на реквизиты:</p>
                                         <p className={style.orderAddress}>
                                             {getPrice}
                                         </p>
