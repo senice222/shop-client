@@ -29,9 +29,9 @@ const Order = () => {
     const firstEl = requisites?.[0]
     const getPrice = firstEl?.[order?.currency]
     console.log(getPrice?.split(',').length)
-    const randomIndex = Math.floor(Math.random() * getPrice?.split(',').length); 
-    const randomElement = getPrice[randomIndex];
-    console.log('index', randomIndex, 'element', randomElement);
+    // const randomIndex = Math.floor(Math.random() * getPrice?.split(',').length); 
+    // const randomElement = getPrice[randomIndex];
+    // console.log('index', randomIndex, 'element', randomElement);
     return (
         <div className={style.container}>
             <p className={style.title}>FASHION</p>
