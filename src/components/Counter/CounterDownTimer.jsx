@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 const CountdownTimer = () => {
-    const [timeInSeconds, setTimeInSeconds] = useState(30 * 60); 
+    const initialTimeInSeconds = localStorage.getItem('countdownTime') || 30 * 60;
+    const [timeInSeconds, setTimeInSeconds] = useState(parseInt(initialTimeInSeconds)); 
 
     useEffect(() => {
         const countdownInterval = setInterval(() => {
-            setTimeInSeconds(prevTime => prevTime - 1);
+            setTimeInSeconds(prevTime => {
+                const newTime = prevTime - 1;
+                localStorage.setItem('countdownTime', newTime.toString());
+                return newTime;
+            });
         }, 1000);
 
         return () => clearInterval(countdownInterval);
