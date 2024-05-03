@@ -28,7 +28,7 @@ const Order = () => {
     
     const firstEl = requisites?.[0]
     const getPrice = firstEl?.[order?.currency]
-    console.log(getPrice?.length);
+    console.log(getPrice?.split(',').length);
     // const randomIndex = Math.floor(Math.random() * getPrice?.length); 
     // const randomElement = getPrice[randomIndex];
     return (
