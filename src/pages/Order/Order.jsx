@@ -28,7 +28,7 @@ const Order = () => {
     
     const firstEl = requisites?.[0]
     const getPrice = firstEl?.[order?.currency]
-    const randomIndex = Math.floor(Math.random() * getPrice.length); 
+    const randomIndex = Math.floor(Math.random() * getPrice?.length); 
     const randomElement = getPrice[randomIndex];
     return (
         <div className={style.container}>
