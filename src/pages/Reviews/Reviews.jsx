@@ -30,7 +30,7 @@ const Reviews = () => {
            <h1>Отзывы</h1>
 
            {reviews ? <div className={s.list}>
-               {reviews.map((item) => <ReviewItem date={item.date} name={item.productId} sum={item.sum} text={item.text} isAdmin={false} />)}
+               {reviews.map((item) => <ReviewItem date={item.date} name={item.productId} text={item.text} isAdmin={false} />)}
            </div> : <h3>Loading...</h3>}
        </div>
    </>

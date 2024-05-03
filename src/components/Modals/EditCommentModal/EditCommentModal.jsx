@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react'
 import s from './EditCommentModal.module.scss'
 import instance from '../../../core/axios'
+
 export const EditCommentModal = ({setOpen, isOpenen, active, update}) => {
     const [date, setDate] = useState(active.date)
     const [productId, setProductId] = useState(active.productId)
-    const [sum, setSum] = useState(active.sum)
     const [text, setText] = useState(active.text)
+
     useEffect(() => {
         setDate(active.date)
         setProductId(active.productId)
-        setSum(active.sum)
         setText(active.text)
     }, [active])
 
     const handleSave = async () => {
         try {
-            const {data} = await instance.post(`/editReview/${active._id}`, {date, productId, sum, text})
+            const {data} = await instance.post(`/editReview/${active._id}`, {date, productId, text})
             if (data.date) {
                 update()
                 setOpen()
@@ -36,10 +36,7 @@ export const EditCommentModal = ({setOpen, isOpenen, active, update}) => {
                         <h2>Название товара:</h2>
                         <input value={productId} onChange={(e) => setProductId(e.target.value)}/>
                     </div>
-                    <div className={s.item}>
-                        <h2>Сумма:</h2>
-                        <input value={sum} onChange={(e) => setSum(e.target.value)}/>
-                    </div>
+
                     <div className={s.item}>
                         <h2>Текст:</h2>
                         <input value={text} onChange={(e) => setText(e.target.value)}/>

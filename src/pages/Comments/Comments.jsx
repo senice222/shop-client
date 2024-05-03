@@ -33,7 +33,7 @@ export const Comments = () => {
         {active ? <EditCommentModal update={getReviews} isOpenen={modal} setOpen={() => setModal(!modal)} active={active}/> : null}
         <div className={s.comments}>
             <div className={s.list}>
-                {reviews ? reviews.map((item) => <ReviewItem onClickFunc={() => setActiveItem(item)} key={item._id} date={item.date} name={item.productId} sum={item.sum} isAdmin={true} text={item.text} />) : null}
+                {reviews ? reviews.map((item) => <ReviewItem onClickFunc={() => setActiveItem(item)} key={item._id} date={item.date} name={item.productId} isAdmin={true} text={item.text} />) : null}
             </div>
             <button onClick={() => setCreating(!creating)}>Добавить комментарий</button>
         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./ReviewItem.module.scss";
 
-const ReviewItem = ({ date, name, sum, text, isAdmin, onClickFunc }) => {
+const ReviewItem = ({ date, name, text, isAdmin, onClickFunc }) => {
   return (
     <div className={s.item}>
       <div className={s.content}>
@@ -9,10 +9,6 @@ const ReviewItem = ({ date, name, sum, text, isAdmin, onClickFunc }) => {
         <p className={s.vasya}>
           <b>Товар: </b>
           {name}
-        </p>
-        <p className={s.vasya}>
-          <b>Сумма: </b>
-          {sum}
         </p>
         <p className={s.text}>{text}</p>
       </div>
