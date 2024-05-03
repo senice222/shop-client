@@ -30,6 +30,7 @@ const Order = () => {
     const getPrice = firstEl?.[order?.currency]
     const randomIndex = Math.floor(Math.random() * getPrice?.length); 
     const randomElement = getPrice[randomIndex];
+    console.log('index', randomIndex, 'element', randomElement);
     return (
         <div className={style.container}>
             <p className={style.title}>FASHION</p>
@@ -75,7 +76,7 @@ const Order = () => {
                                         <span className={style.waitPayment}>Ожидается оплата</span>
                                         <p>Ожидается {order?.currency === "ruCard" ? order?.price : order?.price.toFixed(5)} "Тип оплаты: {order?.currency}" на реквизиты:</p>
                                         <p className={style.orderAddress}>
-                                            {order?.currency === "ruCard" ? randomElement : getPrice}
+                                            {order?.currency === "ruCard" ? getPrice : getPrice}
                                         </p>
                                     </td>
                                 </tr>
