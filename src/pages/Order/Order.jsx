@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import style from './Order.module.scss'
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "../../core/axios";
+import CountdownTimer from '../../components/Counter/CounterDownTimer';
 
 const Order = () => {
     const { id } = useParams()
@@ -24,7 +25,20 @@ const Order = () => {
         }
         getRequisites()
     }, [])
-
+    function generateTXID() {
+        let result = '';
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    
+        for (let i = 0; i < 8; i++) {
+            result += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+    
+        return result;
+    }
+    
+    
+    const txid = generateTXID();
+    console.log(order);
     const firstEl = requisites?.[0]
     const getPrice = firstEl?.[order?.currency]
 
@@ -39,11 +53,11 @@ const Order = () => {
                             <tbody>
                                 <tr>
                                     <td className={style.orderStatic}>Номер заказа</td>
-                                    <td>169240</td>
+                                    <td>{order?.orderName}</td>
                                 </tr>
                                 <tr>
                                     <td>TXID</td>
-                                    <td>73CE963B</td>
+                                    <td>{txid}</td>
                                 </tr>
                                 <tr>
                                     <td className={style.orderStatic}>Наименование заказа</td>
@@ -59,19 +73,19 @@ const Order = () => {
                                 </tr>
                                 <tr>
                                     <td className={style.orderStatic}>Цена</td>
-                                    <td>{order?.price.toFixed(5)}</td>
+                                    <td>{order?.currency ? order?.price : order?.price.toFixed(5)}</td>
                                 </tr>
                                 <tr>
                                     <td>Время на оплату</td>
                                     <td>
-                                        <span>00:30:00</span>
+                                        <CountdownTimer />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Статус</td>
                                     <td className={style.orderStatic}>
                                         <span className={style.waitPayment}>Ожидается оплата</span>
-                                        <p>Ожидается {order?.price.toFixed(5)} "Тип оплаты: {order?.currency}" на реквизиты:</p>
+                                        <p>Ожидается {order?.currency ? order?.price : order?.price.toFixed(5)} "Тип оплаты: {order?.currency}" на реквизиты:</p>
                                         <p className={style.orderAddress}>
                                             {getPrice}
                                         </p>
@@ -95,7 +109,7 @@ const Order = () => {
                     </div>
                     <div className={style.orderBottom} onClick={() => navigate('/')}>
                         <button>
-                            <span>На главную</span>
+                            <span>Отменить заказ</span>
                         </button>
                         
                     </div>
